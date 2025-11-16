@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مقارنة السيارات 2025</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<h1>مقارنة جميع السيارات 2025</h1>
+<nav>
+<a href="index.html">الرئيسية</a>
+</nav>
+</header>
+
+<section>
+<h2>اختر سيارتين للمقارنة</h2>
+<label>السيارة 1:
+<select id="car1">
+  <option value="ToyotaVXR">تويوتا لاند كروزر VXR</option>
+  <option value="Toyota70">تويوتا لاند كروزر 70</option>
+  <option value="Durango36">دودج دورانجو 3.6L</option>
+  <option value="Durango64">دودج دورانجو 6.4L SRT</option>
+  <option value="FordXLT">فورد إكسبلورر XLT</option>
+  <option value="FordExpedition">فورد إكسبيديشن Platinum</option>
+  <option value="GMCYukon">جمس يوكون</option>
+  <option value="GMCAcadia">جمس أكاديا</option>
+  <option value="LeapD19">Leapmotor D19</option>
+  <option value="LiL6">Li L6</option>
+  <option value="BYDTang">BYD Tang EV</option>
+  <option value="XpengG9">Xpeng G9</option>
+  <option value="LiOne">Li One</option>
+  <option value="GenesisG80">جينيسيس G80</option>
+  <option value="LexusES">لكزس ES</option>
+  <option value="MercedesE">مرسيدس E</option>
+  <option value="BMW5">بي إم دبليو الفئة الخامسة</option>
+</select>
+</label>
+
+<label>السيارة 2:
+<select id="car2">
+<!-- نفس الخيارات -->
+  <option value="ToyotaVXR">تويوتا لاند كروزر VXR</option>
+  <option value="Toyota70">تويوتا لاند كروزر 70</option>
+  <option value="Durango36">دودج دورانجو 3.6L</option>
+  <option value="Durango64">دودج دورانجو 6.4L SRT</option>
+  <option value="FordXLT">فورد إكسبلورر XLT</option>
+  <option value="FordExpedition">فورد إكسبيديشن Platinum</option>
+  <option value="GMCYukon">جمس يوكون</option>
+  <option value="GMCAcadia">جمس أكاديا</option>
+  <option value="LeapD19">Leapmotor D19</option>
+  <option value="LiL6">Li L6</option>
+  <option value="BYDTang">BYD Tang EV</option>
+  <option value="XpengG9">Xpeng G9</option>
+  <option value="LiOne">Li One</option>
+  <option value="GenesisG80">جينيسيس G80</option>
+  <option value="LexusES">لكزس ES</option>
+  <option value="MercedesE">مرسيدس E</option>
+  <option value="BMW5">بي إم دبليو الفئة الخامسة</option>
+</select>
+</label>
+
+<button id="compareBtn">قارن</button>
+</section>
+
+<section id="comparisonTable"></section>
+
+<script>
+const cars = {
+ToyotaVXR: {name: "تويوتا لاند كروزر VXR", engine: "هايبرد / V6", price: "398,385 ر.س"},
+Toyota70: {name: "تويوتا لاند كروزر 70", engine: "4.0 V6 / 2.8 I4 ديزل", price: "139,000-196,000 ر.س"},
+Durango36: {name: "دودج دورانجو 3.6L", engine: "3.6L V6", price: "176,000 ر.س"},
+Durango64: {name: "دودج دورانجو 6.4L SRT", engine: "6.4L V8", price: "211,259 ر.س"},
+FordXLT: {name: "فورد إكسبلورر XLT", engine: "2.3L I4 Turbo", price: "198,000 ر.س"},
+FordExpedition: {name: "فورد إكسبيديشن Platinum", engine: "3.5L V6 Twin Turbo", price: "340,000 ر.س"},
+GMCYukon: {name: "جمس يوكون", engine: "5.3L V8", price: "265,000 ر.س"},
+GMCAcadia: {name: "جمس أكاديا", engine: "2.0L Turbo / 2.5L Hybrid", price: "155,000-180,000 ر.س"},
+LeapD19: {name: "Leapmotor D19", engine: "كهربائي", price: "غير مؤكد"},
+LiL6: {name: "Li L6", engine: "هايبرد", price: "غير مؤكد"},
+BYDTang: {name: "BYD Tang EV", engine: "كهربائي", price: "غير مؤكد"},
+XpengG9: {name: "Xpeng G9", engine: "كهربائي مزدوج", price: "غير مؤكد"},
+LiOne: {name: "Li One", engine: "هايبرد PHEV", price: "غير مؤكد"},
+GenesisG80: {name: "جينيسيس G80", engine: "3.5L V6 / هايبرد", price: "290,000 ر.س"},
+LexusES: {name: "لكزس ES", engine: "2.5L / 3.5L V6", price: "210,000-280,000 ر.س"},
+MercedesE: {name: "مرسيدس E", engine: "2.0L Turbo / 3.0L V6", price: "280,000-350,000 ر.س"},
+BMW5: {name: "بي إم دبليو الفئة الخامسة", engine: "2.0L / 3.0L Turbo", price: "260,000-340,000 ر.س"}
+};
+
+document.getElementById('compareBtn').addEventListener('click', () => {
+  const c1 = document.getElementById('car1').value;
+  const c2 = document.getElementById('car2').value;
+  const table = `
+    <table>
+      <tr><th>المواصفة</th><th>${cars[c1].name}</th><th>${cars[c2].name}</th></tr>
+      <tr><td>المحرك / النوع</td><td>${cars[c1].engine}</td><td>${cars[c2].engine}</td></tr>
+      <tr><td>السعر (ر.س)</td><td>${cars[c1].price}</td><td>${cars[c2].price}</td></tr>
+    </table>
+  `;
+  document.getElementById('comparisonTable').innerHTML = table;
+});
+</script>
+
+<footer>
+<p>جميع الحقوق محفوظة © 2025 – صناعة تركي سهل صبحي واكد</p>
+</footer>
+</body>
+</html>
+
+
